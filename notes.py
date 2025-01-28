@@ -1,0 +1,1 @@
+# Jared Lewis, Variable Notes
