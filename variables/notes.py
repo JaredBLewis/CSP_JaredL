@@ -6,4 +6,4 @@ small_number = 4
 
 name = input("What is your name: ")
 
-print(name,"Is a student in", subject)
+print(name,"really likes", subject)
