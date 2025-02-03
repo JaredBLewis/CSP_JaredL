@@ -1,3 +1,4 @@
+// Jared Lewis, TEMPLATE C
 #include <stdio.h>
 
 char name[] = "Jared";
