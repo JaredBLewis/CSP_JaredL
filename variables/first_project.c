@@ -1,8 +1,11 @@
 #include <stdio.h>
 
-int main(void){
-    scanf("what is your name:");
-    printf("You are %f years old.\n");
+int main() {
+    int age;
+    printf("How old are you: ");
+  
+    scanf("%d", &age);  
+    
+    printf("You are %d years old. \n", age);  
     return 0;
 }
-
