@@ -9,9 +9,15 @@
 #print(70%8) #Modulo/Modulus/MOD return the remiander
 
 num = 4
-print(num)
+#print(num)
 
 num +=1
-print(num)
+#print(num)
 
 #they all work!!!
+
+pi = 3.1415926535
+
+#print(round(pi 10))
+
+print(f"{pi:.4f}")
