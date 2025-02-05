@@ -1,4 +1,4 @@
-# Jared Lewis, Python Notes.
+# Jared Lewis, Python Prcatice.
 name = input("What's your name:")
 small_number = 9
 large_number = 117

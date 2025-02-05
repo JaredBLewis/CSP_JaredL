@@ -1,43 +1,44 @@
+//Jared Lewis, C Practice
 #include <stdio.h>
 
 int small_number = 9;
 int large_number = 117;
 
 int main(void) {
-    char name;
+    char name[20];
     printf("what is your name?: \n");
-    scanf("%a", &name);
+    scanf("%s", name);
 
-    char breakfast;
+    char breakfast[20];
     printf("What did you have for breakfast?: \n");
-    scanf("%c", &breakfast);
+    scanf("%s", breakfast);
 
-    char fav_color;
+    char fav_color[20];
     printf("What is your favorite color?: \n");
-    scanf("%d", &fav_color);
+    scanf("%s", fav_color);
 
-    char school;
+    char school[20];
     printf("What School do you attend?: \n");
-    scanf("%e", &school);
+    scanf("%s", school);
 
     int year;
     printf("What year is it?: \n");
-    scanf("%f", &year);
+    scanf("%d", &year);
 
-    char eye_color;
+    char eye_color[20];
     printf("What color are your eyes?: \n");
-    scanf("%g", &eye_color);
+    scanf("%s", eye_color);
 
     int age;
     printf("How old are you?: \n");
-    scanf("%i", &age);
+    scanf("%d", &age);
 
-    char fav_subject;
-    printf("What is your favorite subject in school?: \n\n");
-    scanf("%n", &fav_subject);
+    char fav_subject[20];
+    printf("What is your favorite subject in school?: \n");
+    scanf("%s", fav_subject);
 
-    printf("Hello %a, I understand that you are %i years old, and have %g eyes. \n", name, age, eye_color) ;
-    printf("You attend school at %e, in the year %f, and you ate %c for breakfast today. \n", school, year, breakfast);
-    printf("Your favorite color is %d and your favorite subject in school is %n.", fav_color, fav_subject);
+    printf("Hello %s, I understand that you are %d years old, and have %s eyes. \n", name, age, eye_color);
+    printf("You attend school at %s, in the year %d, and you ate %s for breakfast today. \n", school, year, breakfast);
+    printf("Your favorite color is %s and your favorite subject in school is %s.", fav_color, fav_subject);
     return 0;
 }
