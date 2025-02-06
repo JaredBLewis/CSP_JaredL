@@ -11,7 +11,7 @@ int main(void){
     //num = 4;
     //printf("%d\n", num);
     //printf("%f\n", equation);
-    //printf("%f", expression);
+    printf("%f", expression);
     //printf("%.10f", pi);
     return 0;
 }

@@ -4,7 +4,8 @@
 
 
 int main(void){
-    //int expressionOne = 
+    float expressionOne = 7-24/8*4+6=1;
+    printf("%f", expressionOne);
     //7-24➗8✖️4+6=1
 
     //18➗3-7+2✖️5=9
