@@ -4,7 +4,8 @@
 
 int main(void){
 // print statement that welcomes my user, and tells them what the program does.
-
+printf("Hi there! wlecome to my program!\n");
+printf("This program will calculate the best way to spend your money.\n");
 // ask what their income is (variable an input)
 
 // ask what their rent is (variable an input)
