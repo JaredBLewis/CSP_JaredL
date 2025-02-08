@@ -8,7 +8,7 @@ int main(void) {
     char name[20];
     printf("what is your name?: \n");
     scanf("%s", name);
-
+    
     char breakfast[20];
     printf("What did you have for breakfast?: \n");
     scanf("%s", breakfast);

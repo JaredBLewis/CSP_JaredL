@@ -4,10 +4,10 @@
 print("Hi there, and welcome to my program!\n")
 print("This program will calculate the best way tp spend your money.\n")
 # ask what their income is (variable an input)
-income = float(input("How much is your monthly income?:"))
+income = float(input("What is your monthly income?:"))
 
 # ask what their rent is (variable an input)
-rent = float(input("How much does your monthly rent?:"))
+rent = float(input("How much does your monthly rent cost?:"))
 
 # ask what their utilities is (variable an input)
 utilities = float(input("How much do your monthly utlities cost?:"))
