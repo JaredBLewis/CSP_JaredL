@@ -1,5 +1,6 @@
 // Jared Lewis, Strings Notes C
 #include <stdio.h>
+#include <string.h>
 char subject[50];
 char name[] = "Victoria";
 char sentence[] = "The quick brown fox jumps over the lazy dog.";
