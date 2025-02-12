@@ -6,10 +6,10 @@
 #note ="Hello World"
 note ='Hello World'
 
-name = input("What is your first name?:\n").srtip().lower().capitalize()
+name = input("What is your first name?:\n").strip().lower().capitalize()
 
 #print(f"hello {name} wlcome to my program!")
-print("this is your name"+ name)
+print("this is your name "+ name)
 
 sentance = "The quick brown fox jumps over the lazy dog"
 
@@ -19,4 +19,4 @@ sentance = "The quick brown fox jumps over the lazy dog"
 #print(sentance[10:15])
 start = sentance.find("brown")
 length = len("brown fox")
-print(sentance[start:start+length])
+#print(sentance[start:start+length])
