@@ -1,4 +1,4 @@
-// Jared Lewis, Name Decorater C
+// Jared Lewis, Name Decorator C
 #include <stdio.h>
 #include <string.h>
 
