@@ -6,12 +6,12 @@ int main(void){
     printf("\n");
     printf("Hello and welcome to name decorator!\n");
 
-    char name[50];
+    char name[20];
     printf("What is your first name?:");
     scanf("%s", name);
 
-    char left[] = "#(///";
-    char right[] = "///)#";
+    char left[50] = "#(///";
+    char right[10] = "///)#";
     strcat(left, name);
     strcat(left, right);
 
