@@ -9,4 +9,4 @@ animal = input("Please enter an animal: ").strip().lower()
 famous_person = input("Please enter the first name of a famous person: ").strip().lower().capitalize()
 
 print("Here is your silly sentance: \n")
-print("It was a " + color + " day when " + name + " decided to take a ride in his " + vehicle + ". Then he saw a " + animal + " chasing " + famous_person + " down the street. \n")
+print("It was a " + color + " day when " + name + " decided to take a ride in his " + vehicle + " when he saw a " + animal + " chasing " + famous_person + " down the street. \n")
