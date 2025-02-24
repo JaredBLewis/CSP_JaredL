@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 void greeting(char name[]){
-    return (printf("Hello, %s!\n", name));
+    printf("Hello %s!\n", name);
 }
 
 int main(void){
