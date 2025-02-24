@@ -1,10 +1,10 @@
 # Jared Lewis, Hello World Update Python
 
 def greeting(name):
-    print(f"Hello, {name}!")
+    return(f"Hello, {name}!")
 
-greeting("Jared")
-greeting("Jack")
-greeting("Bob")
-greeting("Alice")
-greeting("Yenesis")
+print(greeting("Jared"))
+print(greeting("Jack"))
+print(greeting("Bob"))
+print(greeting("Alice"))
+print(greeting("Yenesis"))
