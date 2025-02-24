@@ -1,4 +1,4 @@
-#Jared Lewis, Financial Calculator Update Python
+# Jared Lewis, Financial Calculator Update Python
 def info(cost, income, type):
     percent = cost/income *100
     print(f"Your {type} is ${cost:.2f} which is {percent}% of your income.")
