@@ -4,6 +4,7 @@
 #to drive: 16
 #to get learner's permit: 15
 #to go to school: 5
+print("\n")
 print("Hello, and welcome to my program!")
 print("This program will determeine what you are old enough to do.")
 age = int(input("How old are you?: \n"))

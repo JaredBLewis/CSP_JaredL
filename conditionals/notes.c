@@ -1,6 +1,6 @@
 // Jared Lewis, Conditionals Notes C
 #include <stdio.h>
-#include <string.h> // neede to compare strings
+#include <string.h> // needed to compare strings
 
 char name[]= "Jared";
 int num;
