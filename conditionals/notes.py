@@ -20,7 +20,7 @@ else: #if the boleab is false, the else statement happens.
 #4. What do else statements do?
 
 #5. What kind of statement do you use if you have more than 2 needed outcomes?
-num = 2
+num = int(input("How many cookies are there?: \n"))
 
 #computers read from top to bottom, check the least likely condition first
 if num == 0: #<= if always starts the conditional statement
@@ -58,11 +58,15 @@ elif not num < 10: #Not changes to check if the boolean is false
 #9. What does a nested conditional statement do?
 if num < 10:
     if num == 8:
-    print("The number is 8")
+        print("The number is 8")
+    else:
+        if num == 4:
+            print("There are only enough cookies for me... sorry.")
         else:
-        print("The number is less than 10")
+            print("The number is less than 10")
 else:
     print("The number is greater than 10")
+# you can nest as many conditionals as you want, but it is not recommended to go past 3.
 
 #10. How do you write an if statement in C?
 

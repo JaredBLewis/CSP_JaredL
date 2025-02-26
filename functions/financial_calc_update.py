@@ -1,4 +1,8 @@
 # Jared Lewis, Financial Calculator Update Python
+
+def input(type):
+    return print(input(f"How much is your monthly {type}?:"))
+
 def info(cost, income, type):
     percent = cost/income *100
     print(f"Your {type} is ${cost:.2f} which is {percent}% of your income.")
@@ -8,7 +12,7 @@ def w
 print("Hi there, and welcome to my program!\n")
 print("This program will calculate the best way to spend your money.\n")
 # ask what their income is (variable an input)
-income = float(input("What is your monthly income?:"))
+income = input("What is your monthly income?:")
 
 # ask what their rent is (variable an input)
 rent = float(input("How much does your monthly rent cost?:"))
