@@ -1,40 +1,32 @@
 // Jared Lewis, Financial Calculator Update C
 #include <stdio.h>
 #include <math.h>
+
 float income, rent, utilities, groceries, transportation, savings, spending;
 
-void percent(char type[],int amount){
-    int per = amount/ income *100;
-    printf("The percent of your income for %s is %d%%.\n", type, per);
+void info(char type[],int cost){
+    int per = cost/ income *100;
+    printf("Your %s is $%d which is %d%% of your income.\n", type, cost, per);
 }
-
 float user_input(char type[]){
-    return (user_input("How much is your monthly %s?: ", type));
+    float amount;
+    printf("How much is your monthly %s?: ", type);
+    scanf("%f", &amount);
+    return amount;
 
 }
-
 int main(void){
     // print statement that welcomes my user, and tells them what the program does.
     printf("\n");
     printf("Hi there! wlecome to my program!\n");
     printf("This program will calculate the best way to spend your money.\n");
-    // ask what their income is (variable an input)
+
+    // collect user inputs
     income = user_input("income");
-    // ask what their rent is (variable an input)
-    printf("How much does your monthly rent cost?:");
-    scanf("%d", &rent);
-
-    // ask what their utilities is (variable an input)
-    printf("How much does your monthly utilities cost?:");
-    scanf("%d", &utilities);
-
-    // ask what their groceries is (variable an input)
-    printf("How much does your monthly groceries cost?:");
-    scanf("%d", &groceries);
-
-    // ask what their transportation is (variable an input)
-    printf("How much does your monthly transportation cost?:");
-    scanf("%d", &transportation);
+    rent = user_input("rent");
+    utilities = user_input("utilities");
+    groceries = user_input("groceries");
+    transportation = user_input("transportation");
 
     // calculate percent of income for each category
     float savings = income * 0.1;
@@ -45,12 +37,12 @@ int main(void){
     float per_transportation = (float)transportation / income * 100;
     float per_spending = (float)spending / income * 100;
 
-    // give
-    percent("rent", rent);
-    percent("uttilities", utilities);
-    percent("groceries", groceries);
-    percent("transportation", transportation);
-    percent("savings", savings);
-    percent("spending", spending);
+    // print out the results
+    info("rent", rent);
+    info("uttilities", utilities);
+    info("groceries", groceries);
+    info("transportation", transportation);
+    info("savings", savings);
+    info("spending", spending);
     return 0;
 }
