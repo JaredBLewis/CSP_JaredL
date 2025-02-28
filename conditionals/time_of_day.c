@@ -9,13 +9,6 @@ int main(void){
     printf("What is your name?: ");
     scanf("%s", name);
 
-   time_t seconds;
-   seconds = time(NULL);
-   time_t rawtime;
-   struct tm * timeinfo;
-   time(&rawtime);
-   timeinfo = localtime(&rawtime);
-   printf("Current time & date is %s", asctime(timeinfo));
    time_t now = time(NULL);
    struct tm * tm_struct = localtime(&now);
    int hour = tm_struct->tm_hour;
