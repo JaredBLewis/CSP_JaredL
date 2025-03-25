@@ -2,7 +2,7 @@
 import time
 
 # sets the delay between each character printed
-delay = 0.035
+delay = 0.04
 
 # The Introduction
 message1 = "Welcome user...\n"\
