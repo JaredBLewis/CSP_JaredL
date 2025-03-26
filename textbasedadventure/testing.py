@@ -1,16 +1,14 @@
 # Testing Code Python
-import time
-import sys
+map = " __________________________________\n"\
+"|            Tic-Tac-Toe           |\n"\
+"|               |   |              |\n"\
+"|            ___|   |___           |\n"\
+"|        ___| Map       |___       |\n"\
+"| Hangman___             ___Memory |\n"\
+"|           |___     ___|          |\n"\
+"|            /  |___|              |\n"\
+"|     Keypad    |   |              |\n"\
+"|                Exit              |\n"\
+"|__________________________________|\n"
 
-
-animation = "Please Press Enter to Continue"
-while True:
-    # Display the entire phrase
-    sys.stdout.write("\r" + animation)
-    sys.stdout.flush()
-    time.sleep(0.5)  # Pause for half a second
-
-    # Clear the phrase
-    sys.stdout.write("\r" + " " * len(animation))
-    sys.stdout.flush()
-    time.sleep(0.5)  # Pause for half a second
+print(map)
