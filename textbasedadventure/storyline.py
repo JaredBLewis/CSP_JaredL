@@ -1,5 +1,9 @@
 # Jared Lewis, Text Based Adventure Storyline
 import time
+import sys
+import threading
+import os
+import random
 
 #Game Functions
 
@@ -252,6 +256,22 @@ def memory():
 
 
 # Where the story starts
+# Fancy text functions
+def clear_terminal():
+    os.system("cls" if os.name == "nt" else "clear")
+
+def flashing_text(stop_event):
+    sys.stdout.write("\033[?25l")  # Hide the cursor
+    sys.stdout.flush()
+    while not stop_event.is_set():
+        sys.stdout.write("\rPress ENTER to continue   ")
+        sys.stdout.flush()
+        time.sleep(0.5)
+        sys.stdout.write("\r                                ")  # Ensure the line is cleared properly
+        sys.stdout.flush()
+        time.sleep(0.5)
+    sys.stdout.write("\033[?25h")  # Show the cursor again
+    sys.stdout.flush()
 
 # sets the delay between each character printed
 delay = 0.01
@@ -262,7 +282,7 @@ message1 = "Welcome user...\n"\
 "This game will test your skills through a series of minigames.\n"\
 "This game includes certain experiances that may cause anxiety or fear.\n"\
 "This game is meant to possibly raise the heart rate\n"\
-"and levals of adrenaline.\n"\
+"and levels of adrenaline.\n"\
 "Please be aware of this before you continue.\n"\
 "\n"\
 "May I welcome you to...\n"\
@@ -273,21 +293,22 @@ message1 = "Welcome user...\n"\
 "Anthony Petersen\n"\
 "Douglas London\n"\
 "Jared Lewis\n"\
-"\n"\
-"Press Enter to Continue\n"
+"\n"
 
-# function to print the message slowly.
+# function to make text fancy.
 for char in message1:
-    print(char, end="")
+    print(char, end="", flush=True)
     time.sleep(delay)
 
-# waits for the user to press enter
-while True:
-    if input() == "":
-        break
-    else:
-        continue
+stop_event = threading.Event()
+thread = threading.Thread(target=flashing_text, args=(stop_event,))
+thread.start()
 
+input()
+stop_event.set()
+thread.join()
+
+clear_terminal()  # Clear the terminal again before the next message
 
 # Itroduction to Backstory
 message2 = "Chapter 1:\n"\
@@ -421,30 +442,34 @@ def game_selection():
         print(char, end="")
         time.sleep(delay)
 
-# Stupid Proofs input
-while True:
-    try:
-        user_input = int(input())
-        if user_input in [1, 2, 3, 4]:
-            break
-        else:
+    # Stupid Proofs input
+    while True:
+        try:
+            user_input = int(input())
+            if user_input in [1, 2, 3, 4]:
+                break
+            else:
+                print("Invalid Input. Please enter a number between 1 and 4.")
+        except ValueError:
             print("Invalid Input. Please enter a number between 1 and 4.")
-    except ValueError:
-        print("Invalid Input. Please enter a number between 1 and 4.")
 
-# Collects the user's input
-if user_input == 1:
-    tic_tac_toe()
-elif user_input == 2:
-    hangman()
-elif user_input == 3:
-    memory()
-elif user_input == 4:
-    print("Please enter the 3-digit code, enter q to return to map")
-    code = input()
-    if code == "q":
-        game_selection()
-    elif code != "826":
-        print("Incorrect code. Please try again.")
-    elif code == "826":
-        False
+
+    # Collects the user's input
+    if user_input == 1:
+        tic_tac_toe()
+    elif user_input == 2:
+        hangman()
+    elif user_input == 3:
+        memory()
+    elif user_input == 4:
+        print("Please enter the 3-digit code, enter q to return to map")
+        code = input()
+        if code == "q":
+            game_selection()
+        elif code != "826":
+            print("Incorrect code. Please try again.")
+        elif code == "826":
+            False
+# Calls The game_selection Funtion
+game_selection()
+

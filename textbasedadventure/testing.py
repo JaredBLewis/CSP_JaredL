@@ -1,7 +1,7 @@
 # Testing Code Python
 import time
 
-delay = 0.1
+delay = 0.01
 #function for game selection
 def game_selection():
     # prints the map
@@ -21,25 +21,29 @@ def game_selection():
         print(char, end="")
         time.sleep(delay)
 
-# Stupid Proofs input
-while True:
-    try:
-        user_input = int(input())
-        if user_input in [1, 2, 3, 4]:
-            break
-        else:
+
+    # Stupid Proofs input
+    while True:
+        try:
+            user_input = int(input())
+            if user_input in [1, 2, 3, 4]:
+                break
+            else:
+                print("Invalid Input. Please enter a number between 1 and 4.")
+        except ValueError:
             print("Invalid Input. Please enter a number between 1 and 4.")
-    except ValueError:
-        print("Invalid Input. Please enter a number between 1 and 4.")
+            continue
 
-# Collects the user's input
+    # Collects the user's input
+    if user_input == 4:
+        print("Please enter the 3-digit code, enter q to return to map")
+        code = input()
+        if code == "q":
+            game_selection()
+        elif code != "826":
+            print("Incorrect code. Please try again.")
+        elif code == "826":
+            False
+game_selection()
 
-if user_input == 4:
-    print("Please enter the 3-digit code, enter q to return to map")
-    code = input()
-    if code == "q":
-        game_selection()
-    elif code != "826":
-        print("Incorrect code. Please try again.")
-    elif code == "826":
-        False
+print("this works")
