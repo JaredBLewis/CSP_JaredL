@@ -144,7 +144,7 @@ def hangman():
             """  
 
 
-        return stages[wrong_attempts]  
+        return [wrong_attempts]  
     
     def check_guess(letter, chosen_word, guessed_letters):  
         if letter in chosen_word:  
@@ -402,22 +402,24 @@ map = " __________________________________\n"\
 "|                Exit              |\n"\
 "|__________________________________|\n"
 
-# prints the map
-print(map)
+#function for game selection
+def game_selection():
+    # prints the map
+    print(map)
 
-# Game Selection
-message7 = "You are located where it says 'Map'.\n"\
-"Where do you choose to go?\n"\
-"1. Tic-Tac-Toe\n"\
-"2. Hangman\n"\
-"3. Memory\n"\
-"4. Keypad\n"\
-"Enter the number you choose:\n"
+    # Game Selection
+    message7 = "You are located where it says 'Map'.\n"\
+    "Where do you choose to go?\n"\
+    "1. Tic-Tac-Toe\n"\
+    "2. Hangman\n"\
+    "3. Memory\n"\
+    "4. Keypad\n"\
+    "Enter the number you choose:\n"
 
-# function to print the message slowly.
-for char in message7:
-    print(char, end="")
-    time.sleep(delay)
+    # function to print the message slowly.
+    for char in message7:
+        print(char, end="")
+        time.sleep(delay)
 
 # Stupid Proofs input
 while True:
@@ -438,7 +440,11 @@ elif user_input == 2:
 elif user_input == 3:
     memory()
 elif user_input == 4:
-    print("Please enter the 3-digit code:")
+    print("Please enter the 3-digit code, enter q to return to map")
     code = input()
-    if code == "826":
-        
+    if code == "q":
+        game_selection()
+    elif code != "826":
+        print("Incorrect code. Please try again.")
+    elif code == "826":
+        False
