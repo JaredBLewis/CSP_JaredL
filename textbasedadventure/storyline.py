@@ -49,7 +49,7 @@ def tic_tac_toe():
                 continue
         slot[player] = 'X'
 
-        # Check for a win or tie
+        # Check if user won
         if (slot[1] == slot[2] == slot[3] or slot[4] == slot[5] == slot[6] or slot[7] == slot[8] == slot[9] or
             slot[1] == slot[4] == slot[7] or slot[2] == slot[5] == slot[8] or slot[3] == slot[6] == slot[9] or
             slot[1] == slot[5] == slot[9] or slot[3] == slot[5] == slot[7]):
@@ -62,31 +62,11 @@ def tic_tac_toe():
                 print("Press Enter to return to the map")
                 while True:
                     if input() == "":
+                        clear_terminal()
                         game_selection()
+                        return  # Exit the function after game_selection()
                     else:
-                        continue
-            elif (slot[1] == slot[2] == slot[3] == 'O' or slot[4] == slot[5] == slot[6] == 'O' or
-                  slot[7] == slot[8] == slot[9] == 'O' or slot[1] == slot[4] == slot[7] == 'O' or
-                  slot[2] == slot[5] == slot[8] == 'O' or slot[3] == slot[6] == slot[9] == 'O' or
-                  slot[1] == slot[5] == slot[9] == 'O' or slot[3] == slot[5] == slot[7] == 'O'):
-                print("You lost!\n")
-                print("Press Enter to return to the map")
-                while True:
-                    if input() == "":
-                        game_selection()
-                    else:
-                        continue
-                break
-
-        if all(cell == 'X' or cell == 'O' for cell in slot.values()):
-            print("It's a tie!")
-            print("Press Enter to return to the map")
-            while True:
-                if input() == "":
-                    game_selection()
-                else:
-                    continue
-            break
+                        break
 
         # Computer's turn
         while True:
@@ -94,7 +74,37 @@ def tic_tac_toe():
             if slot[computer] != 'X' and slot[computer] != 'O':
                 slot[computer] = 'O'
                 print(draw_board())
+
+                # Check if computer won
+                if (slot[1] == slot[2] == slot[3] == 'O' or slot[4] == slot[5] == slot[6] == 'O' or
+                    slot[7] == slot[8] == slot[9] == 'O' or slot[1] == slot[4] == slot[7] == 'O' or
+                    slot[2] == slot[5] == slot[8] == 'O' or slot[3] == slot[6] == slot[9] == 'O' or
+                    slot[1] == slot[5] == slot[9] == 'O' or slot[3] == slot[5] == slot[7]):
+                    print("You lost!\n")
+                    print("Press Enter to return to the map")
+                    while True:
+                        if input() == "":
+                            clear_terminal()
+                            game_selection()
+                            return  # Exit the function after game_selection()
+                        else:
+                            continue
+                    
                 break
+
+        # Check for tie
+        if all(cell == 'X' or cell == 'O' for cell in slot.values()):
+            print("It's a tie!")
+            print("Press Enter to return to the map")
+            while True:
+                if input() == "":
+                    clear_terminal()
+                    game_selection()
+                    return  # Exit the function after game_selection()
+                else:
+                    continue
+            break
+
 
 #Alan De Lara
 def hangman():
@@ -202,10 +212,12 @@ def hangman():
     
             if set(chosen_word).issubset(set(guessed_letters)):  # Win condition  
                 print("Congratulations! You've guessed the word:", chosen_word) 
+                print("\n")
                 print("Digit #1 is 8")
                 print("Press Enter to return to the map")
                 while True:
                     if input() == "":
+                        clear_terminal()
                         game_selection()
                     else:
                         continue
@@ -228,67 +240,79 @@ def memory():
     import random
     clear_terminal()
     delay = 0.035
-    ANuser_input = "nothing"
-    ANinstructions = "This is a memory game that will flash the numbers and you have to repeat them.\n" \
-    "Press enter to begin"
-    ANinstructions2 = "Please enter your answer, and remember to add spaces in between each number: \n"
-    def start_game():
-        ANmemory_1 = random.randint(1,9)
-        ANmemory_2 = random.randint(1,9)
-        ANmemory_3 = random.randint(1,9)
-        ANframes = [  
-        """  
-        [ x ] [ x ]
-        [ x ] [ x ]  
-        [ x ] [ x ]""",  
-    
-        f"""  
-        [ {ANmemory_2} ] [ {ANmemory_3} ]   
-        [ {ANmemory_3} ] [ {ANmemory_1} ]  
-        [ {ANmemory_1} ] [ {ANmemory_2} ]""",  
-    
-        """  
-        [ x ] [ x ]    
-        [ x ] [ x ]    
-        [ x ] [ x ]""",  
-        ]  
 
-        for frame in ANframes:  
-            print(frame)  
-            time.sleep(1)  # Pause for a moment to show the frame
+    ANinstructions = "This is a memory game that will flash the numbers and you have to repeat them.\n" \
+                     "Press Enter to begin.\n"
+    ANinstructions2 = "Please enter your answer, and remember to add spaces in between each number: \n"\
+                     "HINT: If the flashed numbers where:\n"\
+                     "[ 1 ] [ 4 ]\n"\
+                     "[ 2 ] [ 5 ]\n"\
+                     "[ 3 ] [ 6 ]\n"\
+                     "You would enter the answer as '1 4 2 5 3 6'\n"
+
+    def start_game():
+        # Generate random numbers for the memory sequence
+        ANmemory_1 = random.randint(1, 9)
+        ANmemory_2 = random.randint(1, 9)
+        ANmemory_3 = random.randint(1, 9)
+        ANframes = [
+            """  
+            [ x ] [ x ]
+            [ x ] [ x ]  
+            [ x ] [ x ]""",
+            f"""  
+            [ {ANmemory_2} ] [ {ANmemory_3} ]   
+            [ {ANmemory_3} ] [ {ANmemory_1} ]  
+            [ {ANmemory_1} ] [ {ANmemory_2} ]""",
+            """  
+            [ x ] [ x ]    
+            [ x ] [ x ]    
+            [ x ] [ x ]""",
+        ]
+
+        # Display the frames
+        for frame in ANframes:
+            print(frame)
+            time.sleep(3)  # Pause for a moment to show the frame
             os.system("cls" if os.name == "nt" else "clear")  # Clear the screen
+
+        # Return the correct sequence
         return [ANmemory_2, ANmemory_3, ANmemory_3, ANmemory_1, ANmemory_1, ANmemory_2]
+
     def check_guess(ANuser_input, ANcorrect_guess):
+        # Compare the user's input with the correct sequence
         if ANuser_input == ANcorrect_guess:
             print("Well done!")
-            return("Well done!")
+            return True
         else:
             print("Try again!")
+            return False
 
+    # Display instructions
     for char in ANinstructions:
         print(char, end="")
         time.sleep(delay)
-    for char in ANinstructions2:
-        print(char, end="")
-        time.sleep(delay)
-    if ANinstructions2 == "":
-        while True:  # Loop until the user guesses correctly
-            ANcorrect_sequence = start_game()  # Display the frames and get the correct sequence
-            ANuser_input = input("Please enter your answer, and remember to add spaces in between each number: ").split()  
+    input()  # Wait for the user to press Enter
 
-            try:  
-                ANuser_input = [int(num) for num in ANuser_input]  # Convert input to integers
-                if check_guess(ANuser_input, ANcorrect_sequence) == "Well done!": # Check if the guess is correct
-                    print("Digit #2 is 2")
-                    print("Press Enter to return to the map")
-                    while True:
-                        if input() == "":
-                            game_selection()
-                        else:
-                            continue
-                    break  # Exit the loop if correct
-            except ValueError:  
-                print("Please enter numbers only!")  #If someone enters letters
+    while True:  # Loop until the user guesses correctly
+        ANcorrect_sequence = start_game()  # Display the frames and get the correct sequence
+        ANuser_input = input(ANinstructions2).split()  # Get the user's input as a list of strings
+
+        try:
+            # Convert input to integers
+            ANuser_input = [int(num) for num in ANuser_input]
+            if check_guess(ANuser_input, ANcorrect_sequence):  # Check if the guess is correct
+                print("Digit #2 is 2")
+                print("Press Enter to return to the map")
+                while True:
+                    if input() == "":
+                        clear_terminal()
+                        game_selection()
+                        return  # Exit the function after returning to the map
+                    else:
+                        continue
+        except ValueError:
+            print("Please enter numbers only! Try again.")  # Handles invalid input
 
 
 # Where the story starts
@@ -310,7 +334,7 @@ def flashing_text(stop_event):
     sys.stdout.flush()
 
 # sets the delay between each character printed
-delay = 0.01
+delay = 0.005
 
 # Clear the terminal
 clear_terminal()
@@ -435,7 +459,7 @@ while True:
     if input() == "":
         break
     else:
-        continue
+        print("Only Press ENTER")
 clear_terminal()
 
 message6 = "As the door slowly creaks open, you peer out into a long hallway.\n"\
@@ -454,7 +478,7 @@ while True:
     if input() == "":
         break
     else:
-        continue
+        print("Only Press ENTER")
 clear_terminal()
 
 #Chapter 2
@@ -489,6 +513,7 @@ def keypad():
     print("Please enter the 3-digit code, enter q to return to map")
     code = input()
     if code == "q":
+        clear_terminal()
         game_selection()
     elif code != "826":
         print("Incorrect code.")
@@ -497,7 +522,6 @@ def keypad():
         False
 #function for game selection
 def game_selection():
-    clear_terminal()
     # prints the map
     print(map)
 
@@ -542,4 +566,134 @@ def game_selection():
 # Calls The game_selection Funtion
 game_selection()
 
-print("hurray!")
+# next message
+clear_terminal()
+message9 = "The metal sheet opens with a hiss, and you walk over to the door.\n"\
+"On the door, in bold red letters, you read, “DO NOT ENTER”\n"\
+"Should you open the door?\n"\
+"1 Yes\n"\
+"2 No\n"\
+"Enter the number you choose:\n"\
+
+# function to print the message slowly.
+for char in message9:
+    print(char, end="")
+    time.sleep(delay)
+
+# Function for if input is 2
+def message10():
+    clear_terminal()
+    message10 = "You leave the door closed and instead wander around the rooms looking for any way to escape,\n"\
+    "But the only thing you find is a trap door with a heavy duty lock on it.\n"\
+    "It appears the only way out is through the door.\n"\
+    "Should you open the door?\n"\
+    "1 Yes\n"\
+    "Enter the number you choose:\n"
+
+    # function to print the message slowly.
+    for char in message10:
+        print(char, end="")
+        time.sleep(delay)
+    
+    # Collects the user's input
+    while True:
+            user_input = input()
+            if user_input == "1":
+                return True
+            else:
+                print("Your only way out is through the door. Please enter the number 1.")
+
+
+# Collects and stupid proofs input
+while True:
+    user_input = input()
+    if user_input == "1":
+        break
+    elif user_input == "2":
+        if message10():
+            break
+    else:
+        print("Invalid Input. Please enter 1 or 2.")
+    
+
+# next message
+clear_terminal()
+message11 = "You open the door, and spy a key on the floor just outside.\n"\
+"You pick up the key and head back in to test it on the locked trapdoor.\n"\
+"But Suddenly...\n"\
+
+# function to print the message slowly.
+for char in message11:
+    print(char, end="")
+    time.sleep(delay)
+
+# next message
+time.sleep(1)
+message12 = "You hear a screeching coming from the end of the hall outside.\n"\
+"The sound of multiple pairs of feet pattering down the hall stops you dead in your tracks.\n"\
+"You lunge for the door and slam it just as you see a dark figure carreen towards you.\n"\
+"Without a second thought your reflexes from years of Navy Seal training,\n"\
+"cause you to slam the button on the keypad making the sheet of metal to slam down hard against the floor.\n"\
+"You stand still for a few seconds, still processing what just happened.\n"\
+"Your heart still pounding from the terrifying figure you only got a glimpse of.\n"\
+"However, just a glimpse...\n"
+
+# function to print the message slowly.
+for char in message12:
+    print(char, end="")
+    time.sleep(delay)
+
+# next message
+time.sleep(1)
+message13 = "was more than you wanted to see.\n"\
+
+# function to print the message slowly.
+for char in message13:
+    print(char, end="", flush=True)
+    time.sleep(delay)
+
+# waits for the user to press enter - Douglas
+stop_event = threading.Event()
+thread = threading.Thread(target=flashing_text, args=(stop_event,))
+thread.start()
+
+input()
+stop_event.set()
+thread.join()
+clear_terminal()
+
+# Chapter 2 - Jared
+message14 = "Chapter 2:\n"\
+"THE BEAST\n"\
+"\n"
+
+# function to print the message slowly.
+for char in message14:
+    print(char, end="", flush=True)
+    time.sleep(delay)
+
+# waits for the user to press enter - Douglas
+stop_event = threading.Event()
+thread = threading.Thread(target=flashing_text, args=(stop_event,))
+thread.start()
+
+input()
+stop_event.set()
+thread.join()
+clear_terminal()
+
+# next message - Jared
+message15 = "The pounding of the supernatural thing on the plate of metal interrupts your brief moment of silence.\n"\
+"You dash to the trapdoor in the center of the room,\n"\
+"and fumble with the key as you try to jam it into the old and tarnished lock.\n"\
+"With shaking hands you manage to twist the key, and you quickly slide it off and fling open the hatch in the floor.\n"\
+"You jump down to the bottom of the stairs that are revealed, and sprint down the corridor.\n"\
+"To your dismay, you find another door, securely padlocked.\n"\
+"Frantically, you look around, and spy a few pins.\n"\
+"You have one chance of survival...\n"\
+"YOU HAVE TO PICK THE LOCK!\n"\
+
+# function to print the message slowly.
+for char in message15:
+    print(char, end="")
+    time.sleep(delay)
