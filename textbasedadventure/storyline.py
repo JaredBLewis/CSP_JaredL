@@ -1,4 +1,4 @@
-# Jared Lewis, Text Based Adventure Storyline
+# Text Based Adventure Storyline
 import time
 import sys
 import threading
@@ -10,6 +10,7 @@ import random
 # Tick Tack Toe - Jared Lewis
 def tic_tac_toe():
     import random
+    clear_terminal()
 
     # Dictionary that holds the board
     slot = {
@@ -47,7 +48,6 @@ def tic_tac_toe():
                 print("Invalid input. Enter a number between 1 and 9.")
                 continue
         slot[player] = 'X'
-        print(draw_board())
 
         # Check for a win or tie
         if (slot[1] == slot[2] == slot[3] or slot[4] == slot[5] == slot[6] or slot[7] == slot[8] == slot[9] or
@@ -58,16 +58,34 @@ def tic_tac_toe():
                 slot[2] == slot[5] == slot[8] == 'X' or slot[3] == slot[6] == slot[9] == 'X' or
                 slot[1] == slot[5] == slot[9] == 'X' or slot[3] == slot[5] == slot[7] == 'X'):
                 print("You win!\n")
-                break
+                print("Digit #3 is 6")
+                print("Press Enter to return to the map")
+                while True:
+                    if input() == "":
+                        game_selection()
+                    else:
+                        continue
             elif (slot[1] == slot[2] == slot[3] == 'O' or slot[4] == slot[5] == slot[6] == 'O' or
                   slot[7] == slot[8] == slot[9] == 'O' or slot[1] == slot[4] == slot[7] == 'O' or
                   slot[2] == slot[5] == slot[8] == 'O' or slot[3] == slot[6] == slot[9] == 'O' or
                   slot[1] == slot[5] == slot[9] == 'O' or slot[3] == slot[5] == slot[7] == 'O'):
                 print("You lost!\n")
+                print("Press Enter to return to the map")
+                while True:
+                    if input() == "":
+                        game_selection()
+                    else:
+                        continue
                 break
 
         if all(cell == 'X' or cell == 'O' for cell in slot.values()):
             print("It's a tie!")
+            print("Press Enter to return to the map")
+            while True:
+                if input() == "":
+                    game_selection()
+                else:
+                    continue
             break
 
         # Computer's turn
@@ -82,6 +100,7 @@ def tic_tac_toe():
 def hangman():
     import random  
     import time  
+    clear_terminal()
     # word list  
     words = ["pattern", "hay", "overview", "anniversary", "flourish", "remember", "experiment","arrange", "stadium", "domestic", "demonstration", "conversation", ]  
     
@@ -182,15 +201,24 @@ def hangman():
                         print("Wrong guess!")  
     
             if set(chosen_word).issubset(set(guessed_letters)):  # Win condition  
-                print("Congratulations! You've guessed the word:", chosen_word)  
+                print("Congratulations! You've guessed the word:", chosen_word) 
+                print("Digit #1 is 8")
+                print("Press Enter to return to the map")
+                while True:
+                    if input() == "":
+                        game_selection()
+                    else:
+                        continue
                 break  
             
         if wrong_attempts == max_attempts:  # Loss condition  
-            print("Game over! The word was:", chosen_word)  
-    
-        # ask if they want to play again  
-        play_again = input("Do you want to play again? (yes/no) ")  
-        if play_again.lower() != "yes":  
+            print("Game over! The word was:", chosen_word)
+            print("Press Enter to return to the map")
+            while True:
+                if input() == "":
+                    game_selection()
+                else:
+                    continue
             break  
 
 #Anthony Petersen
@@ -198,6 +226,7 @@ def memory():
     import time
     import os
     import random
+    clear_terminal()
     delay = 0.035
     ANuser_input = "nothing"
     ANinstructions = "This is a memory game that will flash the numbers and you have to repeat them.\n" \
@@ -249,14 +278,21 @@ def memory():
 
             try:  
                 ANuser_input = [int(num) for num in ANuser_input]  # Convert input to integers
-                if check_guess(ANuser_input, ANcorrect_sequence) == "Well done!":  # Check if the guess is correct
+                if check_guess(ANuser_input, ANcorrect_sequence) == "Well done!": # Check if the guess is correct
+                    print("Digit #2 is 2")
+                    print("Press Enter to return to the map")
+                    while True:
+                        if input() == "":
+                            game_selection()
+                        else:
+                            continue
                     break  # Exit the loop if correct
             except ValueError:  
                 print("Please enter numbers only!")  #If someone enters letters
 
 
 # Where the story starts
-# Fancy text functions
+# Fancy text functions - Douglas
 def clear_terminal():
     os.system("cls" if os.name == "nt" else "clear")
 
@@ -276,7 +312,10 @@ def flashing_text(stop_event):
 # sets the delay between each character printed
 delay = 0.01
 
-# The Introduction
+# Clear the terminal
+clear_terminal()
+
+# The Introduction - Jared
 message1 = "Welcome user...\n"\
 "The game you are about to play is a text based adventure game.\n"\
 "This game will test your skills through a series of minigames.\n"\
@@ -295,7 +334,7 @@ message1 = "Welcome user...\n"\
 "Jared Lewis\n"\
 "\n"
 
-# function to make text fancy.
+# function to make text fancy - Douglas
 for char in message1:
     print(char, end="", flush=True)
     time.sleep(delay)
@@ -310,25 +349,27 @@ thread.join()
 
 clear_terminal()  # Clear the terminal again before the next message
 
-# Itroduction to Backstory
+# Itroduction to Backstory - Jared
 message2 = "Chapter 1:\n"\
 "A NORMAL CAR TRIP\n"\
 "\n"\
-"Press Enter to Continue\n"
 
 # function to print the message slowly.
 for char in message2:
-    print(char, end="")
+    print(char, end="", flush=True)
     time.sleep(delay)
 
-# waits for the user to press enter
-while True:
-    if input() == "":
-        break
-    else:
-        continue
+# Waits for the user to press enter - Douglas
+stop_event = threading.Event()
+thread = threading.Thread(target=flashing_text, args=(stop_event,))
+thread.start()
 
-# Backstory
+input()
+stop_event.set()
+thread.join()
+clear_terminal()
+
+# Backstory - Jared
 message3 = "You are a retired militry agent who served with the Navy Seals.\n"\
 "It has been 5 years since your retirement and you currently live in a little nieghborhood in Colorado.\n"\
 "So far, your life has seemed pretty normal.\n"\
@@ -340,49 +381,49 @@ message3 = "You are a retired militry agent who served with the Navy Seals.\n"\
 
 # function to print the message slowly.
 for char in message3:
-    print(char, end="")
+    print(char, end="", flush=True)
     time.sleep(delay)
 
 # dramatic end of Backstory
 time.sleep(1)
 print("Scream...\n")
 time.sleep(1)
-print("Press Enter to Continue")
 
 
-# waits for the user to press enter
-while True:
-    if input() == "":
-        break
-    else:
-        continue
+# waits for the user to press enter - Douglas
+stop_event = threading.Event()
+thread = threading.Thread(target=flashing_text, args=(stop_event,))
+thread.start()
 
-# Introduction to Chapter 2
+input()
+stop_event.set()
+thread.join()
+clear_terminal()
+
+# Introduction to Chapter 2 - Jared
 message4 = "Chapter 2:\n"\
 "THE DARK ROOM\n"\
 "\n"\
-"Press Enter to Continue\n"
 
 # function to print the message slowly.
 for char in message4:
-    print(char, end="")
+    print(char, end="", flush=True)
     time.sleep(delay)
 
-# waits for the user to press enter
-while True:
-    if input() == "":
-        break
-    else:
-        continue
+# waits for the user to press enter - Douglas
+stop_event = threading.Event()
+thread = threading.Thread(target=flashing_text, args=(stop_event,))
+thread.start()
 
-# Chapter 2
+input()
+stop_event.set()
+thread.join()
+clear_terminal()
+
+# Chapter 2 - Jared
 message5 = "As you feel around the room, you catch hold of a door handle.\n"\
-"Press Enter to Open Door\n"\
-"As the door slowly creaks open, you peer out into a long hallway.\n"\
-"The hallway is dimly lit and has wallpaper that looks as though it is from an old orphanage.\n"\
-"You walk down the hall and find a door with the words “too late” scribbled on it.\n"\
 "\n"\
-"Press Enter to Open Door\n"
+"Press Enter to Open Door\n"\
 
 # function to print the message slowly.
 for char in message5:
@@ -395,10 +436,30 @@ while True:
         break
     else:
         continue
+clear_terminal()
+
+message6 = "As the door slowly creaks open, you peer out into a long hallway.\n"\
+"The hallway is dimly lit and has wallpaper that looks as though it is from an old orphanage.\n"\
+"You walk down the hall and find a door with the words “too late” scribbled on it.\n"\
+"\n"\
+"Press Enter to Open Door\n"
+
+# function to print the message slowly.
+for char in message6:
+    print(char, end="")
+    time.sleep(delay)
+
+# waits for the user to press enter
+while True:
+    if input() == "":
+        break
+    else:
+        continue
+clear_terminal()
 
 #Chapter 2
-message6 = "The door scrapes loudly across the floor.\n"\
-"You find yourself in a small room.\n"\
+message7 = "The door scrapes loudly across the floor,\n"\
+"and you find yourself in a small room.\n"\
 "However, as you step inside, a metal sheet slides down in front of the door you just came from.\n"\
 "Right next to the metal sheet, you notice a keypad.\n"\
 "You try guessing the code on the keypad, but to no avail, you need a 3-digit code.\n"\
@@ -406,7 +467,7 @@ message6 = "The door scrapes loudly across the floor.\n"\
 "On the far wall, you see a map:\n"
 
 # function to print the message slowly.
-for char in message6:
+for char in message7:
     print(char, end="")
     time.sleep(delay)
 
@@ -423,14 +484,27 @@ map = " __________________________________\n"\
 "|                Exit              |\n"\
 "|__________________________________|\n"
 
+# functin for keypad
+def keypad():
+    print("Please enter the 3-digit code, enter q to return to map")
+    code = input()
+    if code == "q":
+        game_selection()
+    elif code != "826":
+        print("Incorrect code.")
+        keypad()
+    elif code == "826":
+        False
 #function for game selection
 def game_selection():
+    clear_terminal()
     # prints the map
     print(map)
 
     # Game Selection
-    message7 = "You are located where it says 'Map'.\n"\
+    message8 = "You are located where it says 'Map'.\n"\
     "Where do you choose to go?\n"\
+    "HINT: The selections may have an. answer to the code.\n"\
     "1. Tic-Tac-Toe\n"\
     "2. Hangman\n"\
     "3. Memory\n"\
@@ -438,7 +512,7 @@ def game_selection():
     "Enter the number you choose:\n"
 
     # function to print the message slowly.
-    for char in message7:
+    for char in message8:
         print(char, end="")
         time.sleep(delay)
 
@@ -462,14 +536,10 @@ def game_selection():
     elif user_input == 3:
         memory()
     elif user_input == 4:
-        print("Please enter the 3-digit code, enter q to return to map")
-        code = input()
-        if code == "q":
-            game_selection()
-        elif code != "826":
-            print("Incorrect code. Please try again.")
-        elif code == "826":
-            False
+        clear_terminal()
+        keypad()
+        
 # Calls The game_selection Funtion
 game_selection()
 
+print("hurray!")
