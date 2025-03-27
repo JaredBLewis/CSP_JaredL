@@ -326,9 +326,10 @@ def keypad():
         game_selection()
     elif input_code != code:
         print("Incorrect code.")
-        keypad()
+        keypad() 
     elif input_code == code:
-        False
+        print("Correct code! You unlocked the door!")
+        return 
 
 #function for game selection
 def game_selection():
