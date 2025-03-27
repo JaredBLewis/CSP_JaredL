@@ -22,11 +22,12 @@ def flashing_text(stop_event):
     sys.stdout.flush()
 
 # sets the delay between each character printed
-delay = 0.035
+delay = 0.05
 
 # Copy and Paste section
 
 # next message
+clear_terminal()
 message16 = "You fling the door open, not caring for what might be on the other side.\n"\
 "If anything, it is probably better than where you came from.\n"\
 "You sprint down the new hallway and up a flight of stairs.\n"\
@@ -60,10 +61,10 @@ message18 = "You see your chance.\n"\
 "Just ahead, you see an opening to a large room, and further in the room, is a door with light peeking through the cracks.\n"\
 "Not just any light, natural light.\n"\
 "You pull any last ounce of strength from your weekend body and push it into your legs.\n"\
-"Managing to propel your body through the final distance.\n"\
+"Managing to propel your body the final distance.\n"\
 "Never before has time passed so slowly.\n"\
 "You can feel the pumping of each stride of your legs,\n"\
-"the heartbeat of your heart pumping furiously inside your chest,\n"\
+"the beat of your heart pumping furiously inside your chest,\n"\
 "But worst of all, \n"\
 
 # function to print the message slowly.
@@ -86,7 +87,7 @@ for char in message19:
 time.sleep(1)
 
 # next message
-message20 = "the thumping legs,"
+message20 = "the thumping legs,\n"
 
 # function to print the message slowly.
 for char in message20:
@@ -97,7 +98,7 @@ for char in message20:
 time.sleep(1)
 
 # next message
-message21 = "and the spidery fingers,"
+message21 = "and the grazing touch of spidery fingers,\n"
 
 # function to print the message slowly.
 for char in message21:
@@ -108,7 +109,7 @@ for char in message21:
 time.sleep(1)
 
 # next message
-message22 = "of the beast, just inches behind you."
+message22 = "of the beast, just inches behind you.\n"
 
 # function to print the message slowly.
 for char in message22:
@@ -146,16 +147,25 @@ message24 = "As you come to your senses, you realize the full moon shining, tota
 "As you limp towards it, with every step igniting a fire in your legs, you notice a piece of paper\n"\
 "pinned to your windshield by the wipers.\n"\
 "On it reads the words, 'It was fun to play with you, I look forward to when we meet again.'\n"\
-"You quickly slide into the front seat of your car, and take the set of spare keys from under the\n"\
+"You crumple the paper, then quickly slide into the front seat of your car, take the set of spare keys from under the\n"\
 "car mat inside, and start the engine.\n"\
 "You pull out of the parking lot and slam the gas pedal to the floor, putting as much distance\n"\
 "between you and the building as possible.\n"\
-"\n"\
-"The End.\n"
+"\n"
 
 # function to print the message slowly.
 for char in message24:
-    print(char, end="", flush=True)
+    print(char, end="",)
+    time.sleep(delay)
+
+# pause
+time.sleep(1)
+
+message25 = "THE END\n"
+
+# function to print the message slowly.
+for char in message24:
+    print(char, end="",)
     time.sleep(delay)
 
 # waits for the user to press enter - Douglas
@@ -168,14 +178,18 @@ stop_event.set()
 thread.join()
 clear_terminal()
 
-message25 = "Thank you for playing THE UNDERWORLD!\n"\
+# Credits
+message26 = "Thank you for playing THE UNDERWORLD!\n"\
 "If you didn't know, this game took (number) lines of code.\n"\
 "If you could let us know that you appreciated our game, it would mean a lot.\n"\
 "Once again, thank you, and fairwell.\n"\
 "\n"\
-"Creators:" \
-"Alan De Lara\n"\
-"Anthony Petersen\n"\
-"Douglas London\n"\
-"Jared Lewis\n"\
+"Credits:" \
+"Tic-Tac-Toe  = Jared Lewis"
+"Hangman      = Alan De Lara\n"\
+"Memory       = Anthony Petersen\n"\
+"Lock Picking = Douglas London\n"\
+"\n"\
+"Story        = Jared Lewis\n"\
+"Fancy Text   = Douglas London\n"\
 "\n"
