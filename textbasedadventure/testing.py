@@ -128,7 +128,7 @@ def tic_tac_toe():
 def hangman():
     clear_terminal()
     # word list  
-    words = ["Blood", "dark", "scared", "scream", "drenched", "helpless", "experiment","choking", "crazed", "knife", "chainsaw", "gore", "corpse", "decomposed" ]  
+    words = ["blood", "dark", "scared", "scream", "drenched", "helpless", "experiment","choking", "crazed", "knife", "chainsaw", "gore", "corpse", "decomposed" ]  
     
     def display_hangman(wrong_attempts):  
         if wrong_attempts == 0:  
@@ -521,6 +521,20 @@ map = " __________________________________\n"\
 "|                Exit              |\n"\
 "|__________________________________|\n"
 
+# functin for keypad
+# Function for keypad
+def keypad():
+    print("Please enter the 3-digit code, or enter 'q' to return to the map.")
+    input_code = input()
+    if input_code == "q":
+        clear_terminal()
+        game_selection()
+    elif input_code != code:
+        print("Incorrect code.")
+        keypad()
+    elif input_code == code:
+        clear_terminal()
+
 #function for game selection
 def game_selection():
     # prints the map
@@ -566,21 +580,6 @@ def game_selection():
         
 # Calls The game_selection Funtion
 game_selection()
-
-# functin for keypad
-def keypad():
-    print("Please enter the 3-digit code, enter q to return to map")
-    input_code = input()
-    if input_code == "q":
-        clear_terminal()
-        game_selection()
-    elif input_code != code:
-        print("Incorrect code.")
-        keypad()
-    elif input_code == code:
-        False
-
-
 
 # next message
 clear_terminal()

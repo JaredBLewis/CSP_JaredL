@@ -38,7 +38,7 @@ def flashing_text(stop_event):
     sys.stdout.flush()
 
 # sets the delay between each character printed
-delay = 0.04
+delay = 0.01
 
 # Tick Tack Toe - Jared Lewis
 def tic_tac_toe():
@@ -89,7 +89,7 @@ def tic_tac_toe():
                 slot[7] == slot[8] == slot[9] == 'X' or slot[1] == slot[4] == slot[7] == 'X' or
                 slot[2] == slot[5] == slot[8] == 'X' or slot[3] == slot[6] == slot[9] == 'X' or
                 slot[1] == slot[5] == slot[9] == 'X' or slot[3] == slot[5] == slot[7] == 'X'):
-                print("You win!\n The third digit is", code3, "\n")
+                print("You win!\nThe third digit is", code3, "\n")
                 print("Press Enter to return to the map")
                 while True:
                     if input() == "":
@@ -257,6 +257,7 @@ def hangman():
             print("Press Enter to return to the map")
             while True:
                 if input() == "":
+                    clear_terminal()
                     game_selection()
                 else:
                     continue
@@ -276,7 +277,8 @@ def memory():
                      "[ 3 ] [ 6 ]\n"\
                      "You would enter the answer as '1 4 2 5 3 6'\n"
 
-    def memory():
+    def start_game():
+        clear_terminal()
         # Generate random numbers for the memory sequence
         ANmemory_1 = random.randint(1, 9)
         ANmemory_2 = random.randint(1, 9)
@@ -313,23 +315,52 @@ def memory():
         else:
             print("Try again!")
             return False
+        
+    # Display instructions
+    for char in ANinstructions:
+        print(char, end="")
+        time.sleep(delay)
+    input()  # Wait for the user to press Enter
+
+    while True:  # Loop until the user guesses correctly
+        ANcorrect_sequence = start_game()  # Display the frames and get the correct sequence
+        ANuser_input = input(ANinstructions2).split()  # Get the user's input as a list of strings
+
+        try:
+            # Convert input to integers
+            ANuser_input = [int(num) for num in ANuser_input]
+            if check_guess(ANuser_input, ANcorrect_sequence):  # Check if the guess is correct
+                print("Digit #2 is", code2)
+                print("Press Enter to return to the map")
+                while True:
+                    if input() == "":
+                        clear_terminal()
+                        game_selection()
+                        return  # Exit the function after returning to the map
+                    else:
+                        continue
+        except ValueError:
+            print("Please enter numbers only!")  # Handle invalid input
 
 # Clear the terminal
 clear_terminal()
 
 # functin for keypad
 def keypad():
-    print("Please enter the 3-digit code, enter q to return to map")
-    input_code = input()
-    if input_code == "q":
-        clear_terminal()
-        game_selection()
-    elif input_code != code:
-        print("Incorrect code.")
-        keypad() 
-    elif input_code == code:
-        print("Correct code! You unlocked the door!")
-        return 
+    while True:
+        print(code1, code2, code3)
+        print("Please enter the 3-digit code, or enter 'q' to return to the map.")
+        input_code = input()
+        if input_code == "q":
+            clear_terminal()
+            game_selection()
+            return 
+        elif input_code != code:
+            print("Incorrect code. Try again.")
+        elif input_code == code:
+            print("Correct code! The door unlocks, and you proceed to the next area.")
+            clear_terminal()
+            break 
 
 #function for game selection
 def game_selection():
@@ -339,7 +370,7 @@ def game_selection():
     # Game Selection
     message8 = "You are located where it says 'Map'.\n"\
     "Where do you choose to go?\n"\
-    "HINT: The selections may have an. answer to the code.\n"\
+    "HINT: The selections may have an answer to the code.\n"\
     "1. Tic-Tac-Toe\n"\
     "2. Hangman\n"\
     "3. Memory\n"\
@@ -362,7 +393,6 @@ def game_selection():
         except ValueError:
             print("Invalid Input. Please enter a number between 1 and 4.")
 
-
     # Collects the user's input
     if user_input == 1:
         tic_tac_toe()
@@ -373,7 +403,7 @@ def game_selection():
     elif user_input == 4:
         clear_terminal()
         keypad()
-        
+
 # Calls The game_selection Funtion
 game_selection()
 
