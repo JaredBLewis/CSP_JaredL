@@ -643,7 +643,6 @@ map = " __________________________________\n"\
 # Function for keypad
 def keypad():
     while True:
-        print(code1, code2, code3)
         print("Please enter the 3-digit code, or enter 'q' to return to the map.")
         input_code = input()
         if input_code == "q":
