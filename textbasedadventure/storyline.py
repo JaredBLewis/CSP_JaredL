@@ -794,7 +794,7 @@ message12 = "You hear a screeching coming from the end of the hall outside.\n"\
 "The sound of multiple pairs of feet pattering down the hall stops you dead in your tracks.\n"\
 "You lunge for the door and slam it just as you see a dark figure carreen towards you.\n"\
 "Without a second thought your reflexes from years of Navy Seal training,\n"\
-"cause you to slam the button on the keypad making the sheet of metal to slam down hard against the floor.\n"\
+"cause you to slam the button on the keypad making the sheet of metal slam down hard against the floor.\n"\
 "You stand still for a few seconds, still processing what just happened.\n"\
 "Your heart still pounding from the terrifying figure you only got a glimpse of.\n"\
 "However, just a glimpse...\n"
