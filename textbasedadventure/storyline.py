@@ -7,6 +7,8 @@ import random
 
 
 
+# Global variable to track the user's progress
+checkpoint = "start"
 
 #Game Functions
 input_code = 0
@@ -307,7 +309,7 @@ def hangman():
 #Anthony Petersen
 def memory():
     clear_terminal()
-    delay = 0.035
+    delay = 0.01
 
     ANinstructions = "This is a memory game that will flash the numbers and you have to repeat them.\n" \
                      "\n"\
@@ -424,7 +426,7 @@ def flashing_text3(stop_event):
     sys.stdout.write("\033[?25l")  # Hide the cursor
     sys.stdout.flush()
     while not stop_event.is_set():
-        sys.stdout.write("\rPress ENTER to restart at map.   ")
+        sys.stdout.write("\rPress ENTER to retry.   ")
         sys.stdout.flush()
         time.sleep(0.5)
         sys.stdout.write("\r                                ")  # Ensure the line is cleared properly
@@ -435,7 +437,7 @@ def flashing_text3(stop_event):
 
 
 # sets the delay between each character printed
-delay = 0.04
+delay = 0.01
 
 
 # Clear the terminal
@@ -643,6 +645,7 @@ map = " __________________________________\n"\
 # Function for keypad
 def keypad():
     while True:
+        print(code1,code2,code3)
         print("Please enter the 3-digit code, or enter 'q' to return to the map.")
         input_code = input()
         if input_code == "q":
@@ -660,25 +663,34 @@ def keypad():
         
 #function for game selection
 def game_selection():
-    # prints the map
+    global checkpoint  # Access the global checkpoint variable
+
+    # Check the checkpoint and resume the appropriate part of the game
+    if checkpoint == "lock_picking":
+        # Skip directly to the lock-picking game if the user died there
+        clear_terminal()
+        lock_picking()
+        return
+
+    # Otherwise, print the map and allow the user to choose a game
     print(map)
 
     # Game Selection
     message8 = "You are located where it says 'Map'.\n"\
-    "Where do you choose to go?\n"\
-    "HINT: The selections may have an answer to the code.\n"\
-    "1. Tic-Tac-Toe\n"\
-    "2. Hangman\n"\
-    "3. Memory\n"\
-    "4. Keypad\n"\
-    "Enter the number you choose:\n"
+               "Where do you choose to go?\n"\
+               "HINT: The selections may have an answer to the code.\n"\
+               "1. Tic-Tac-Toe\n"\
+               "2. Hangman\n"\
+               "3. Memory\n"\
+               "4. Keypad\n"\
+               "Enter the number you choose:\n"
 
-    # function to print the message slowly.
+    # Function to print the message slowly
     for char in message8:
         print(char, end="")
         time.sleep(delay)
 
-    # Stupid Proofs input
+    # Stupid-proofs input
     while True:
         try:
             user_input = int(input())
@@ -820,48 +832,9 @@ clear_terminal()
 
 # Chapter 2 - Jared
 def lock_picking():
-    message14 = "Chapter 2:\n"\
-    "THE BEAST\n"\
-    "\n"
+    global checkpoint  # Access the global checkpoint variable
 
-
-    # function to print the message slowly.
-    for char in message14:
-        print(char, end="", flush=True)
-        time.sleep(delay)
-
-
-    # waits for the user to press enter - Douglas
-    stop_event = threading.Event()
-    thread = threading.Thread(target=flashing_text1, args=(stop_event,))
-    thread.start()
-
-
-    input()
-    stop_event.set()
-    thread.join()
-    clear_terminal()
-
-
-    # next message - Jared
-    message15 = "The pounding of the supernatural thing on the plate of metal interrupts your brief moment of silence.\n"\
-    "You dash to the trapdoor in the center of the room,\n"\
-    "and fumble with the key as you try to jam it into the old and tarnished lock.\n"\
-    "With shaking hands you manage to twist the key, quickly sliding it off and fling open the hatch in the floor.\n"\
-    "You jump down to the bottom of the stairs that are revealed, and sprint down the corridor.\n"\
-    "To your dismay, you find another door, securely padlocked.\n"\
-    "Frantically, you look around, and spy a few pins.\n"\
-    "You have one chance of survival...\n"\
-    "YOU HAVE TO PICK THE LOCK!\n"\
-
-
-    # function to print the message slowly.
-    for char in message15:
-        print(char, end="")
-        time.sleep(delay)
-
-
-    # Lock Picking Game - Douglas
+    # Lock-Picking Game Logic
     time.sleep(3)
     clear_terminal()
     low = 1
@@ -889,21 +862,21 @@ def lock_picking():
     timer_thread.start()
 
     print("Correct Place: lists the amount of correct numbers in the correct placement.")
-    print("Wrong Place: lists the amount of correst numbers in the wrong placement.")
+    print("Wrong Place: lists the amount of correct numbers in the wrong placement.")
     print("Find the correct numbers and their placement to pick the lock.")
     print("BUT YOU MUST HURRY!")
-    print("Only "+str(time_limit)+" seconds until the Beast breaks in!\n")
+    print("Only " + str(time_limit) + " seconds until the Beast breaks in!\n")
 
     while guess == 0:
         if time_up:
             message27 = "The Beast breaks down the door and drags you off, you are never heard of again.\n"
 
-            # function to print the message slowly.
+            # Function to print the message slowly
             for char in message27:
                 print(char, end="", flush=True)
                 time.sleep(delay)
 
-            # waits for the user to press enter
+            # Waits for the user to press enter
             stop_event = threading.Event()
             thread = threading.Thread(target=flashing_text3, args=(stop_event,))
             thread.start()
@@ -912,12 +885,14 @@ def lock_picking():
             stop_event.set()
             thread.join()
             clear_terminal()
+
+            # Update the checkpoint to restart at the map
+            checkpoint = "lock_picking"
             game_selection()
+            return
 
         if correct_count == 4:
-            print("KA_KLUNK!")
             guess = 1
-            time.sleep(2)
             return
 
         user_input = input("Enter your guess (4 digits between 1 and 6):\n")
@@ -952,26 +927,9 @@ def lock_picking():
     timer_thread.join()
 
     # Success message
+    print("KA-KLUNK")
     print("You successfully picked the lock!")
-    print("Press Enter to continue.")
-    input()
     clear_terminal()
-
-
-    print(f"Correct: {correct_count}, Wrong: {wrong_count}")
-
-    # Stop the timer thread if the user succeeds
-    time_up = True
-    timer_thread.join()
-
-    # Success message
-    print("You successfully picked the lock!")
-    print("Press Enter to continue.")
-    input()
-    clear_terminal()
-
-
-    print(f"Correct: {correct_count}, Wrong: {wrong_count}")
        
 # Calls the lock picking game
 lock_picking()
