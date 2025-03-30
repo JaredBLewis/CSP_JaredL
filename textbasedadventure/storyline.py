@@ -437,7 +437,7 @@ def flashing_text3(stop_event):
 
 
 # sets the delay between each character printed
-delay = 0.01
+delay = 0.035
 
 
 # Clear the terminal
