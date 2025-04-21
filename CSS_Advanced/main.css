@@ -27,3 +27,8 @@ p{
 img{
     height: 200px;
 }
+#no{
+    display: block;
+    margin: auto;
+    width: 50%
+}
