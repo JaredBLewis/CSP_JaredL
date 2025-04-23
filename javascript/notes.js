@@ -12,7 +12,8 @@ function change(){
 }
 
 function hello(){
-    document.getElementById("title").innerHTML = "Hello World!"
+    let name = window.prompt("What is your name?", "User")
+    document.getElementById("title").innerHTML = "Hello " +name+ "!"
 }
 function hover(){
     document.getElementById("img").src = "https://grist.org/wp-content/uploads/2015/12/plane.jpg?quality=75&strip=all"
@@ -22,4 +23,10 @@ function leave(){
 }
 function hidden(){
     document.getElementById("meme").style.display = "block"
+}
+function pop(){
+    window.alert("Really don't click that!")
+}
+function show(){
+    document.getElementById("lost").style.display = "block"
 }
