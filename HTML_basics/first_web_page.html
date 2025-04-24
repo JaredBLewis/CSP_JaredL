@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Why I Haven't Been Vaccinated</title>
+        <script src="webpage.js"></script>
         <style>
             body{
                 font-family: Georgia, sans-serif;
@@ -31,6 +32,12 @@
             }
             #MMH{
                 height: 350px;
+            }
+            #paragraph{
+                display: none;
+            }
+            #imgsrc{
+                font-size: 10px;
             }
         </style>
     </head>
@@ -63,6 +70,14 @@
                 <li>They are a possible of cause multiple chronic illnesses.</li>
                 <li>Taking the obscene amount that they give now can cause even more serious harm</li>
             </ul>
+            <button id="btn" onclick="view()">Show More</button>
+            <div id="paragraph">
+                <img src="https://www.cdc.gov/vaccinesafety/images/infographic-1.jpg" alt="Image of vaccine">
+                <div id="imgsrc">
+                <p>Image From: CDC</p>
+                </div>
+                <p>They are a possible cause of autism.</p>
+            </div>
         </div>
     </body>
 </html>
