@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Why I like Math</title>
+        <script src="hidden_image.js"></script>
+        <style>
+            *{
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                background-color: antiquewhite;
+                color: rgb(203, 77, 19);
+            }
+            img{
+                height: 200px;
+                width: auto;
+            }
+            #img{
+                font-size: 10px;
+            }
+            #images{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            #hidden{
+                visibility: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <h1 id="title">Why I Like Math</h1>
+        <h2>My Reason</h2>
+        <p>I enjoy math a lot. It's like an enjoyable puzzle for me that I can solve. While I'm not necissarily a math "wizard", I still enjow the idea of being able to solve things using math.</p>
+        <h2>My Favorite Subject in Math</h2>
+        <p>My favorite subject in math is algebra, because it is what works with equations the most. There are sometimes in math class, where I honestly start to miss algebra, and I often get excited when I see an algebraic problem on the homework every know and then.</p>
+        <h2>Some Math Jokes</h2>
+        <div id="images">
+            <div id="img">
+                <img src="https://i.chzbgr.com/full/9305998080/hAACBA97C/funny-math-meme" alt="Funny Math Meme">
+                <p>Image From: CHEEZburger</p>
+            </div>
+            <div id="hidden">
+                <img id="hidden_image" onmouseover="view()" onmouseout="hide()" src="https://image.spreadshirtmedia.com/image-server/v1/compositions/T210A2PA4301PT17X0Y1D1028844135W33099H39719/views/1,width=550,height=550,appearanceId=2,backgroundColor=000000,noPt=true/dear-algebra-stop-asking-me-maths-teacher-ex-lover-mens-t-shirt.jpg" alt="Math Meme">
+                <div id="img">
+                    <p>Image From: Spreadshirt</p>
+                </div>
+            </div>
+        </div>
+        <ul>
+            <li>Why was the equal sign so humble? Because it knew it wasn't less than or greater than anyone else.</li>
+            <li>Why was the obtuse angle so sad? Because it was never right.</li>
+            <li>The last joke is pretty funny, but in order to read it, you have to find it!</li>
+        </ul>
+    </body>
+</html>
