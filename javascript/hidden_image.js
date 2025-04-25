@@ -1,9 +1,7 @@
-function view() {
-    var img = document.getElementById("hidden_image");
-    img.style.visibility = "visible";
-}
-
-function hide() {
-    var img = document.getElementById("hidden_image");
-    img.style.visibility = "hidden";
+function view(){
+    if(document.getElementById("hidden").style.display === "block"){
+        document.getElementById("hidden").style.display = "none"
+    }else{
+    document.getElementById("hidden").style.display = "block"
+    }
 }

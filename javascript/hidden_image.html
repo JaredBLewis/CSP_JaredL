@@ -5,7 +5,7 @@
         <title>Why I like Math</title>
         <script src="hidden_image.js"></script>
         <style>
-            *{
+            body{
                 font-family: Georgia, 'Times New Roman', Times, serif;
                 background-color: antiquewhite;
                 color: rgb(203, 77, 19);
@@ -22,7 +22,18 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             #hidden{
-                visibility: hidden;
+                display: none;
+            }
+            #key{
+                background-color: antiquewhite;
+                border: 1px solid black;
+                width: 150px;
+                height: 150px;
+
+            }
+            #hvrspot{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
             }
         </style>
     </head>
@@ -40,16 +51,21 @@
                 <p>Image From: CHEEZburger</p>
             </div>
             <div id="hidden">
-                <img id="hidden_image" onmouseover="view()" onmouseout="hide()" src="https://image.spreadshirtmedia.com/image-server/v1/compositions/T210A2PA4301PT17X0Y1D1028844135W33099H39719/views/1,width=550,height=550,appearanceId=2,backgroundColor=000000,noPt=true/dear-algebra-stop-asking-me-maths-teacher-ex-lover-mens-t-shirt.jpg" alt="Math Meme">
+                <img id="hidden_image" src="https://image.spreadshirtmedia.com/image-server/v1/compositions/T210A2PA4301PT17X0Y1D1028844135W33099H39719/views/1,width=550,height=550,appearanceId=2,backgroundColor=000000,noPt=true/dear-algebra-stop-asking-me-maths-teacher-ex-lover-mens-t-shirt.jpg" alt="Math Meme">
                 <div id="img">
                     <p>Image From: Spreadshirt</p>
                 </div>
             </div>
         </div>
-        <ul>
-            <li>Why was the equal sign so humble? Because it knew it wasn't less than or greater than anyone else.</li>
-            <li>Why was the obtuse angle so sad? Because it was never right.</li>
-            <li>The last joke is pretty funny, but in order to read it, you have to find it!</li>
-        </ul>
+        <div id="hvrspot">
+            <ul>
+                <li>Why was the equal sign so humble? Because it knew it wasn't less than or greater than anyone else.</li>
+                <li>Why was the obtuse angle so sad? Because it was never right.</li>
+                <li>The last joke is pretty funny, but in order to read it, you have to find it!<br>You can find it by hovering over a specific thing on this page, and it's your job to find out what that thing is.</li>
+            </ul>
+            <div id="btn">
+                <button id="key" onmouseover="view()"></button>
+            </div>
+        </div>
     </body>
 </html>
