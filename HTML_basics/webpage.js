@@ -4,7 +4,7 @@ function change() {
     document.getElementById("imgsrc").innerHTML = "Image From: Vectreezy";
 }
 
-function ResetImage() {
+function resetImage() {
     const img = document.getElementById("img");
     img.src = "https://media.cnn.com/api/v1/images/stellar/prod/210910234902-01-vaccine-protest-ca-0829.jpg?q=w_3000,h_2000,x_0,y_0,c_fill";
     document.getElementById("imgsrc").innerHTML = "Image From: CNN";
