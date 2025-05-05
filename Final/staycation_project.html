@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>The Beauty of Sundance</title>
+        <title>Sundance: The Perfect Vacation</title>
         <script src="staycation_project.js"></script>
         <style>
             body{
@@ -25,13 +25,52 @@
                 margin-top: 20px;
             }
             #img1{
+                width: 100%;
+                padding-left: 100%;
+            }
+            #second{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                margin-top: 20px;
+            }
+            #img2{
+                width: 100%;
+            }
+            #right{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+            #hidden{
+                display: none;
+                margin-top: 20px;
+            }
+            #button{
+                background-color: rgb(203, 77, 19);
+                color: white;
+                padding: 10px 20px;
+                margin-left: 20px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            #hddnimg{
                 width: 50%;
+            }
+            #sources{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+            }
+            #button2{
+                background-color: black;
+                border: none;
+                width: 50%;
+                height: 1px;
             }
         </style>
     </head>
     <body>
         <div id="opening">
-            <h1 id="title">The Beauty of Sundance</h1>
+            <h1 id="title">Sundance:<br>The Perfect Resort</h1>
             <img id="bigimg" src="https://www.turracherhoehe.at/uploads/media/1920x720/03/2613-Sundance_Winter_red.jpg?v=1-0" alt="Image of Sundance">
         </div>
         <div id="first">
@@ -47,8 +86,30 @@
                 <img id="img1" src="https://images.squarespace-cdn.com/content/v1/536d357ee4b0b850609e0eb2/1549656433531-0TYFQ99EKNW4AW334LCN/IMG_1314.jpg" alt="Image of sign at Sundance">
             </div>
         </div>
-
-        <p>Image From Turracher Hohe</p>
-        <p>Image From Follow Ann</p>
+        <div id="second">
+            <div id="left1">
+                <img id="img2" src="https://www.sundanceresort.com/wp-content/uploads/2024/03/summit_3_24DJI_0903-Edit-scaled.webp" alt="Image of Pool at Sundance">
+            </div>
+            <div id="right1">
+                <div id="left2">
+                    <button id="button" onclick="show()">Show More</button>
+                    <div id="hidden">
+                        <p>##########################</p>
+                    </div>
+                </div>
+                <div id="right2">
+                    <div id="hidden">
+                        <img id="hddnimg" src="" alt="Image of Sundance">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sources">
+            <button id="button2"></button>
+            <h2>Sources</h2>            
+            <p>Image From Turracher Hohe</p>
+            <p>Image From Follow Ann</p>
+            <p>Image From sundanceresort.com</p>
+        </div>
     </body>
 </html>
