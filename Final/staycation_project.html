@@ -42,8 +42,7 @@
             }
             #hidden{
                 display: none;
-                margin-top: 20px;
-                margin-left: 100px;
+                margin: 20px;
             }
             #button{
                 background-color: rgb(203, 77, 19);
@@ -53,11 +52,15 @@
                 cursor: pointer;
                 font-size: 16px;
             }
-            #hddnimg{
-                width: 50%;
+            #hddntxt{
+                margin-right: 20px;
+            }
+            #img3{
+                width: 460px;
             }
             #sources{
                 margin-top: 20px;
+                margin-bottom: 50px;
                 text-align: center;
                 width: 100%;
             }
@@ -77,12 +80,13 @@
         <div id="first">
             <div id="left">
                 <h2>Why Choose Sundance?</h2>
-                <p>Sundance is mainly known for its skiing and snowboarding trails, and although these tails are pretty awesome, Sundance also offers plenty of activities in the summer as well. In the winter, it is a great stop for skiers and snowboarders of all skill levels, and provides plenty of trails for skiing. The location is also a bonus as it is very close to Provo, the scenic drive through the mountains only lasting about 15 minutes. In the Summer, the chances for adventure continue, and it holds many activities including ziplining, hiking and mountainbiking. Along with all the activities at Sundance, there are also a number of highly rated resturants that continue to please plenty of guests.</p>
+                <p>Sundance is mainly known for its skiing and snowboarding trails, and although these tails are pretty awesome, Sundance also offers plenty of activities in the summer as well. In the winter, it is a great stop for skiers and snowboarders of all skill levels, and provides plenty of trails for skiing. The location is also a bonus as it is very close to Provo, the scenic drive through the mountains only lasting about 15 minutes. In the Summer, the chances for adventure continue, and it holds many activities including ziplining, hiking and mountain biking. Along with all the activities at Sundance, there are also a number of highly rated restaurants that continue to please plenty of guests.</p>
+                <br>
                 <h2>Some of the activities that Sundance offers:</h2>
                 <h3>Winter activities:</h3>
                 <ul>
                     <li>Skiing and snowboarding.</li>
-                    <li>Ski school for begining skiers.</li>
+                    <li>Ski school for beginning skiers.</li>
                     <li>Multiple spas for relaxation.</li>
                     <li>Lots of places to eat.</li>
                 </ul>
@@ -90,12 +94,12 @@
                 <ul>
                     <li>Countles trails for mountain biking, lifts included.</li>
                     <li>Trails for hiking and horseback riding.</li>
-                    <li>Rides on the lifts that offer incrediable views.</li>
+                    <li>Rides on the lifts that offer incredible views.</li>
                     <li>Tours of the mountain on ziplines.</li>
                 </ul>
             </div>
             <div id="right">
-                <img id="img1" src="https://images.squarespace-cdn.com/content/v1/536d357ee4b0b850609e0eb2/1549656433531-0TYFQ99EKNW4AW334LCN/IMG_1314.jpg" alt="Image of sign at Sundance">
+                <img id="img1" onmouseover="change()" onmouseout="resetImage()" src="https://images.squarespace-cdn.com/content/v1/536d357ee4b0b850609e0eb2/1549656433531-0TYFQ99EKNW4AW334LCN/IMG_1314.jpg" alt="Image of sign at Sundance">
             </div>
         </div>
         <div id="second">
@@ -108,21 +112,23 @@
                     <div id="hidden">
                         <div id="hddntxt">
                             <h2>The History of Sundance</h2>
-                            <p>##########################</p>
+                            <p>In the mid-1800s, the Stewart family obtained property on the mountain and the land was passed down through their family. It was mostly a rural area until 1920 when it was connected by one unpaved road. In 1922 there were some hiking trails put in, and according to Wikipedia, "The Stewart family appreciated the hikes since they brought more popularity to the area." Later in 1944 the mountainside became a ski area known as Timp Haven, and over the next few years, the Stewart family created a ski resort. In 1968 Timp Haven was purchased by Robert Redford and was renamed Sundance because of the film Redford played in, known as <i>Butch Cassidy and the Sundance Kid</i> (shown in the image to the right). Since then, Sundance has continued to grow, and is the perfect vacation resort for many.</p>
                         </div>
                         <div id="hddnimg">
-                        <img id="img3" src="" alt="Image of Sundance">
+                        <img id="img3" src="https://assets.scriptslug.com/live/img/poster/butch-cassidy-and-the-sundance-kid-1969.jpg?v=1679811430" alt="Image of The Sundance Kid">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div id="sources">
-            <button id="button2"></button>+
-            <h2>Sources</h2>            
-            <p>Image From Turracher Hohe</p>
-            <p>Image From Follow Ann</p>
-            <p>Image From sundanceresort.com</p>
+            <button id="button2"></button>
+            <h2>Sources</h2>
+            <p>Image of Sundance Resort From Turracher Hohe</p>
+            <p>Image of the Sign at Sundance During Winter From Follow Ann</p>
+            <p>Image of the Sign at Sundance During Summer From Etsy</p>
+            <p>Image of the Spa From sundanceresort.com</p>
+            <p>Image of <i>The Sundance Kid</i> From Script Slug</p>
         </div>
     </body>
 </html>
